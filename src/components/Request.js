@@ -6,12 +6,12 @@ import Response from './Response';
 
 const methods = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'];
 
-const Request = ({ url, resultText, selectedMethod, onGoClick, onInputChange }) => {
+const Request = ({ url, resultText, selectedMethod, onGoClick, onRadioChange, onInputChange }) => {
   return (
     <div>
       <input type="text" onChange={onInputChange} placeholder="Enter API URL here." value={url} />
       <div className={styles.Request}>
-        {methods.map((method, i) => <Radio key={i} method={method} selectedMethod={selectedMethod} />)}
+        {methods.map((method, i) => <Radio key={i} method={method} onChange={onRadioChange} selectedMethod={selectedMethod} />)}
       </div>
       <button onClick={onGoClick}>Go</button>
       <Response text={resultText}/>
@@ -24,6 +24,7 @@ Request.propTypes = {
   selectedMethod: PropTypes.string.isRequired,
   onGoClick: PropTypes.func.isRequired,
   onInputChange: PropTypes.func.isRequired,
+  onRadioChange: PropTypes.func.isRequired, 
   resultText: PropTypes.string.isRequired
 };
 
