@@ -5,11 +5,17 @@ export default class Main extends React.Component {
   state = {
     url: '',
     method: 'GET',
-    resultText: ''
+    resultText: '',
+    bodyToSend: '',
+    bodyToSendDisabled: false
   }
 
   handleGoClick = () => {
-    fetch(this.state.url, { method: this.state.method })
+    const options = { method: this.state.method };
+    if(['PUT', 'POST', 'PATCH'].includes(this.state.method)) {
+      options.body = this.state.bodyToSend;
+    }
+    fetch(this.state.url, options)
       .then((res) => res.text())
       .then((text) => {
         this.setState((state) => {
