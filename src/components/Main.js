@@ -10,12 +10,14 @@ export default class Main extends React.Component {
 
   handleGoClick = () => {
     fetch(this.state.url, { method: this.state.method })
-      .then((res) => res.json())
-      .then((json) => {
-        console.log('result json', json);
+      .then((res) => res.text())
+      .then((text) => {
+        this.setState((state) => {
+          return { ...state, resultText:text };    
+        });
       });
   }
- 
+
   handleInputChange = ({ target }) => {
     this.setState((state) => {
       return { ...state, url:target.value };
