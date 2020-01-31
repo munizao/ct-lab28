@@ -1,3 +1,12 @@
 .History {
   
 }
+
+.Method {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.Url {
+  font-size: .8rem;
+}

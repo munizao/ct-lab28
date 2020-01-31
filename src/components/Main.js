@@ -7,7 +7,8 @@ export default class Main extends React.Component {
     method: 'GET',
     resultText: '',
     bodyToSend: '',
-    bodyTextareaDisabled: false
+    bodyTextareaDisabled: false,
+    history: []
   }
 
   handleRadioChange = ({ target }) => {
@@ -25,6 +26,10 @@ export default class Main extends React.Component {
   }
 
   handleGoClick = () => {
+    this.setState((state) => {
+      const history = [...this.state.history, { method: this.state.method, url: this.state.url }];
+      return { ...state, history };
+    });
     const options = { method: this.state.method };
     if(!this.state.bodyTextareaDisabled) {
       options.body = this.state.bodyToSend;
@@ -47,7 +52,7 @@ export default class Main extends React.Component {
   render() {
     return (
       <main>
-        <History />
+        <History history={this.state.history} />
         <Request resultText={this.state.resultText} url={this.state.url} selectedMethod={this.state.method} bodyTextareaDisabled={this.state.bodyTextareaDisabled} onInputChange={this.handleInputChange} onBodyChange={this.handleBodyChange} onRadioChange={this.handleRadioChange} onGoClick={this.handleGoClick}/>
       </main>
     );
