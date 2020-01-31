@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import styles from './History.css';
-
 
 const History = ({ history }) => {
   return (
@@ -14,7 +12,7 @@ const History = ({ history }) => {
             <li key={i}>
               <span className={styles.Method}>
                 {historyItem.method}
-              </span> 
+              </span> &mdash; 
               <span className={styles.Url}>
                 {historyItem.url}
               </span>
