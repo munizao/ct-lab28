@@ -1,0 +1,13 @@
+.Radio {
+    margin: 5px;
+    padding: 3px;
+}
+
+[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:checked+label{ 
+  color: white;
+  background-color: rgb(9, 116, 14);
+}

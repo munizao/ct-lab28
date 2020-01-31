@@ -1,0 +1,18 @@
+.History {
+  flex-basis: 30%;
+  h2 {
+    text-align: center;
+  }
+  li {
+    list-style-type: none;
+  }
+}
+
+.Method {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.Url {
+  font-size: .8rem;
+}
