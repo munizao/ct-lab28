@@ -1,9 +1,8 @@
 import React from 'react';
-// import ReactJson from 'react-json-view'
+import ReactJson from 'react-json-view';
 import PropTypes from 'prop-types';
 import styles from './Request.css';
 import Radio from './Radio';
-import Response from './Response';
 
 const methods = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'];
 
@@ -16,8 +15,7 @@ const Request = ({ url, resultText, selectedMethod, bodyTextareaDisabled, onBody
         <button onClick={onGoClick}>Go</button>
       </div>
       <textarea className={styles.BodyArea} onChange={onBodyChange} disabled={bodyTextareaDisabled}/>
-      {/* <ReactJson src={resultText} /> */}
-      <Response text={resultText}/>
+      {resultText && <ReactJson src={JSON.parse(resultText)} />}
     </div>
   );
 };
