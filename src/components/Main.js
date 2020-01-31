@@ -9,7 +9,7 @@ export default class Main extends React.Component {
     method: 'GET',
     resultText: '',
     bodyToSend: '',
-    bodyTextareaDisabled: false,
+    bodyTextareaDisabled: true,
     history: []
   }
 
