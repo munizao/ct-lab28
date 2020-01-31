@@ -26,7 +26,12 @@ const History = ({ history }) => {
 };
 
 History.propTypes = {
-  history: PropTypes.array
+  history: PropTypes.arrayOf(
+    PropTypes.shape({
+      method: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired
+    })
+  )
 };
 
 export default History;
