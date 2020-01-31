@@ -1,4 +1,5 @@
 import React from 'react';
+// import ReactJson from 'react-json-view'
 import PropTypes from 'prop-types';
 import styles from './Request.css';
 import Radio from './Radio';
@@ -14,7 +15,8 @@ const Request = ({ url, resultText, selectedMethod, bodyTextareaDisabled, onBody
         {methods.map((method, i) => <Radio key={i} method={method} onChange={onRadioChange} selectedMethod={selectedMethod} />)}
         <button onClick={onGoClick}>Go</button>
       </div>
-      <textarea onChange={onBodyChange} disabled={bodyTextareaDisabled}/>
+      <textarea className={styles.BodyArea} onChange={onBodyChange} disabled={bodyTextareaDisabled}/>
+      {/* <ReactJson src={resultText} /> */}
       <Response text={resultText}/>
     </div>
   );
