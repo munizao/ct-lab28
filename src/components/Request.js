@@ -6,7 +6,7 @@ import Response from './Response';
 
 const methods = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'];
 
-const Request = ({ url, resultText, selectedMethod, onBodyChange, onGoClick, onRadioChange, onInputChange }) => {
+const Request = ({ url, resultText, selectedMethod, bodyTextareaDisabled, onBodyChange, onGoClick, onRadioChange, onInputChange }) => {
   return (
     <div>
       <input type="text" onChange={onInputChange} placeholder="Enter API URL here." value={url} />
@@ -14,7 +14,7 @@ const Request = ({ url, resultText, selectedMethod, onBodyChange, onGoClick, onR
         {methods.map((method, i) => <Radio key={i} method={method} onChange={onRadioChange} selectedMethod={selectedMethod} />)}
       </div>
       <button onClick={onGoClick}>Go</button>
-      <textarea onChange={onBodyChange}/>
+      <textarea onChange={onBodyChange} disabled={bodyTextareaDisabled}/>
       <Response text={resultText}/>
     </div>
   );
@@ -23,6 +23,7 @@ const Request = ({ url, resultText, selectedMethod, onBodyChange, onGoClick, onR
 Request.propTypes = {
   url: PropTypes.string.isRequired,
   selectedMethod: PropTypes.string.isRequired,
+  bodyTextareaDisabled: PropTypes.bool.isRequired,
   onGoClick: PropTypes.func.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onRadioChange: PropTypes.func.isRequired, 

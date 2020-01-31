@@ -7,12 +7,14 @@ export default class Main extends React.Component {
     method: 'GET',
     resultText: '',
     bodyToSend: '',
-    bodyToSendDisabled: false
+    bodyTextareaDisabled: false
   }
 
   handleRadioChange = ({ target }) => {
     this.setState((state) => {
-      return { ...state, method: target.value };
+      return { ...state, 
+        method: target.value, 
+        bodyTextareaDisabled: ['GET', 'DELETE'].includes(target.value) };
     });
   }
 
@@ -24,7 +26,7 @@ export default class Main extends React.Component {
 
   handleGoClick = () => {
     const options = { method: this.state.method };
-    if(['PUT', 'POST', 'PATCH'].includes(this.state.method)) {
+    if(!this.state.bodyTextareaDisabled) {
       options.body = this.state.bodyToSend;
     }
     fetch(this.state.url, options)
@@ -46,7 +48,7 @@ export default class Main extends React.Component {
     return (
       <main>
         <History />
-        <Request resultText={this.state.resultText} url={this.state.url} selectedMethod={this.state.method} onInputChange={this.handleInputChange} onBodyChange={this.handleBodyChange} onRadioChange={this.handleRadioChange} onGoClick={this.handleGoClick}/>
+        <Request resultText={this.state.resultText} url={this.state.url} selectedMethod={this.state.method} bodyTextareaDisabled={this.state.bodyTextareaDisabled} onInputChange={this.handleInputChange} onBodyChange={this.handleBodyChange} onRadioChange={this.handleRadioChange} onGoClick={this.handleGoClick}/>
       </main>
     );
   }
