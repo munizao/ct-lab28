@@ -1,0 +1,11 @@
+header {
+  h1 {
+    margin: 0px;
+    padding: 30px;
+    color: white;
+    background-color: #1815a5;
+    text-align: center;
+    font-size: 2.5rem;
+
+  }
+}
